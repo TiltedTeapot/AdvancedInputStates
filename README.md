@@ -1,4 +1,5 @@
 # AdvancedInputStates
+This is the Development Branch for Releases please refer to the [Release](https://github.com/TiltedTeapot/AdvancedInputStates/tree/Release) branch
 A Library for advanced input states in MonoGame WindowsDX version 3.8.0.1641
 
 - ButtonStateContainer: Allows you to get pressed and released as well as the defualt down and up
