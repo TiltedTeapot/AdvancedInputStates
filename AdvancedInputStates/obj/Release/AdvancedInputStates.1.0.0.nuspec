@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AdvancedInputStates</id>
+    <version>1.0.0</version>
+    <authors>Keenan Rhode</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="MonoGame.Framework.WindowsDX" version="3.8.0.1641" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\bin\Release\netcoreapp3.1\AdvancedInputStates.dll" target="lib\netcoreapp3.1\AdvancedInputStates.dll" />
+  </files>
+</package>

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace AdvancedInputStates
@@ -11,7 +9,7 @@ namespace AdvancedInputStates
     /// used to get more complex button states then given by Xna by using <seealso cref="AdvancedButtonState"/>
     /// </summary>
     /// <remarks>
-    /// Use <see cref="Update"/> at the begining of a frame to get acurate data <br/>
+    /// Use <see cref="Update"/> at the begining of a frame to get accurate data <br/>
     /// grab the <see cref="State"/> to get the current <seealso cref="AdvancedButtonState"/>
     /// </remarks>
     public class ButtonStateContainer
@@ -20,7 +18,7 @@ namespace AdvancedInputStates
         /// <summary>
         /// a delagate thats run each frame to get the current button state
         /// </summary>
-        public Func<ButtonState> Button { get; private set; }
+        public Func<bool> Button { get; private set; }
 
         /// <summary>
         /// The current Advanced Button State
@@ -30,12 +28,12 @@ namespace AdvancedInputStates
         /// <summary>
         /// The current default button state
         /// </summary>
-        public ButtonState Current { get; private set; }
+        public bool CurrentlyPressed { get; private set; }
 
         /// <summary>
         /// the default button state from the last frame
         /// </summary>
-        private ButtonState Old { get; set; }
+        private bool PressedLastFrame { get; set; }
         #endregion
 
         #region constuctors
@@ -43,34 +41,34 @@ namespace AdvancedInputStates
         /// basic constructor
         /// </summary>
         /// <remarks>
-        /// pass a delegate that gets the current default button state, must return <seealso cref="ButtonState"/> 
+        /// pass a delegate that returns true if the button is currently down
         /// </remarks>
         /// <example>
         /// this demonstrates how to make a constructor
         /// <code>
-        /// new ButtonStateContainer(delegate { return Mouse.GetState().LeftButton; });
+        /// new ButtonStateContainer(delegate { return Keyboard.GetState().IsKeyDown(Keys.Space); });
         /// </code>
         /// </example>
-        /// <param name="button">the function to run each frame to get the default button state</param>
-        public ButtonStateContainer(Func<ButtonState> button)
+        /// <param name="button">the function to run each frame to get the current default button state</param>
+        internal ButtonStateContainer(Func<bool> button)
         {
             Button = button;
-            Old = button();
+            PressedLastFrame = button();
         }
         #endregion
 
         #region class methods
         /// <summary>
-        /// Run this at the beginning of each frame before you access the properties for acurate data
+        /// Run this at the beginning of each frame before you access the properties for accurate data
         /// </summary>
         public void Update()
         {
-            Old = Current;
-            Current = Button();
+            PressedLastFrame = CurrentlyPressed;
+            CurrentlyPressed = Button();
 
-            if (Current == Old)
+            if (CurrentlyPressed == PressedLastFrame)
             {
-                if (Current == ButtonState.Pressed)
+                if (CurrentlyPressed)
                 {
                     State = AdvancedButtonState.Held;
                 }
@@ -81,7 +79,7 @@ namespace AdvancedInputStates
             }
             else
             {
-                if (Current == ButtonState.Pressed)
+                if (CurrentlyPressed)
                 {
                     State = AdvancedButtonState.Pressed;
                 }
@@ -90,24 +88,6 @@ namespace AdvancedInputStates
                     State = AdvancedButtonState.Released;
                 }
             }
-        }
-        #endregion
-
-        #region static properties
-        /// <summary>
-        /// Gets a <seealso cref="ButtonStateContainer"/> for the Left Mouse Button
-        /// </summary>
-        public static ButtonStateContainer LeftMouseButton
-        {
-            get => new ButtonStateContainer(delegate { return Mouse.GetState().LeftButton; });
-        }
-
-        /// <summary>
-        /// Gets a <seealso cref="ButtonStateContainer"/> for the Right Mouse Button
-        /// </summary>
-        public static ButtonStateContainer RightMouseButton
-        {
-            get => new ButtonStateContainer(delegate { return Mouse.GetState().RightButton; });
         }
         #endregion
     }
@@ -134,9 +114,21 @@ namespace AdvancedInputStates
     /// </summary>
     public enum AdvancedButtonState
     {
+        /// <summary>
+        /// Button is up but did not switch to up this frame
+        /// </summary>
         None,
+        /// <summary>
+        /// Button switched to down this frame
+        /// </summary>
         Pressed,
+        /// <summary>
+        /// Button is down but did not switch to down this frame
+        /// </summary>
         Held,
+        /// <summary>
+        /// Button switched to up this frame
+        /// </summary>
         Released
     }
 }

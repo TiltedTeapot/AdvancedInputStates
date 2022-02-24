@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Keenan Rhode</Authors>
+    <Company>TiltedTeapot</Company>
   </PropertyGroup>
 
   <ItemGroup>

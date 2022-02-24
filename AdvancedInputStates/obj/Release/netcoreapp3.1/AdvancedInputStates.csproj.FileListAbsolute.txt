@@ -1,0 +1,9 @@
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\bin\Release\netcoreapp3.1\AdvancedInputStates.deps.json
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\bin\Release\netcoreapp3.1\AdvancedInputStates.dll
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\bin\Release\netcoreapp3.1\AdvancedInputStates.pdb
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.AssemblyInfo.cs
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.dll
+C:\Users\Admin\source\repos\AdvancedInputStates\AdvancedInputStates\obj\Release\netcoreapp3.1\AdvancedInputStates.pdb
